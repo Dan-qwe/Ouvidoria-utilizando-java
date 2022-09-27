@@ -1,0 +1,75 @@
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		ArrayList<String> reclamacoes = new ArrayList<String>();
+		
+		ArrayList<String> elogios = new ArrayList<String>();
+		
+		ArrayList<String> sugestoes = new ArrayList<String>();
+		
+		int opcao = 1;
+		JOptionPane.showMessageDialog(null, "Bem vindo a ouvidoria da universidade ABC");
+		while (opcao != 5) {
+
+			String resposta = JOptionPane.showInputDialog(
+					"Opcoes \n 1) reclamaçao \n 2) sugestao \n 3) elogios \n 4) adicionar \n 5) Sair  \n Digite a sua opcao:");
+			opcao = Integer.parseInt(resposta);
+			System.out.println(resposta);
+
+			if (opcao == 1) {
+				System.out.println("reclamaçoes");
+				for (int i = 0; i < reclamacoes.size(); i = i + 1) {
+
+					System.out.println(i + 1 + " reclamação: " + reclamacoes.get(i));
+				}
+
+			} else if (opcao == 2) {
+				System.out.println("sugestao");
+				for (int i = 0; i < sugestoes.size(); i = i + 1) {
+					System.out.println(i + 1 + " sugestão: " + sugestoes.get(i));
+				}
+			} else if (opcao == 3) {
+				System.out.println("elogios");
+				for (int i = 0; i < elogios.size(); i = i + 1) {
+					System.out.println(i + 1 + " elogio: " + elogios.get(i));
+				}
+			} else if (opcao == 5) {
+				System.out.println("saindo do sistema de ouvidoria");
+			} else if (opcao == 4) {
+				    @SuppressWarnings("resource")
+					Scanner sc = new Scanner(System.in);
+					System.out.println("Digite o seu nome :");
+					String nome = sc.nextLine();
+					System.out.println(
+							"Informe o tipo de manifestação: (digite 1 para reclamação, 2 para sugestão e 3 para elogio)");
+					int tipo = sc.nextInt();
+					
+					System.out.println("digite sua manifestação: ");
+					@SuppressWarnings("resource")
+					String manifestacao = new Scanner(System.in).nextLine();
+					if (tipo == 1) {
+						reclamacoes.add(nome+"-"+manifestacao);
+					} else if (tipo == 2) {
+						sugestoes.add(nome+"-"+manifestacao);
+					} else if (tipo == 3) {
+						elogios.add(nome+"-"+manifestacao);
+					} else {
+						System.out.println("opção inválida: " + tipo);
+						continue;
+					}
+
+					System.out.println("nome: " + nome + "\\ tipo manifestação: " + tipo + "manifestaçao: " + manifestacao);
+				
+			} else {
+				System.out.println("opcao invalida");
+				for (int i = 1; i <= 10; i++) {
+				}
+			}
+		}
+	}
+}
